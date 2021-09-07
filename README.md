@@ -1,1 +1,3 @@
-# project2Group4
+# NFTy
+
+## This will be the readme for NFTy
