@@ -1,7 +1,7 @@
 {
-  "name": "NFTy",
+  "name": "nfty",
   "version": "1.0.0",
-  "description": "",
+  "description": "## This will be the readme for NFTy",
   "main": "server.js",
   "directories": {
     "test": "tests"
@@ -16,13 +16,8 @@
     "type": "git",
     "url": "git+https://github.com/HavoxPrime/NFTy.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/HavoxPrime/NFTy/issues"
-  },
-  "homepage": "https://github.com/HavoxPrime/NFTy#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.2",
@@ -33,9 +28,13 @@
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5"
-  }  
+  },
   "devDependencies": {
     "jest": "^27.1.0",
     "nodemon": "^2.0.12"
   },
+  "bugs": {
+    "url": "https://github.com/HavoxPrime/NFTy/issues"
+  },
+  "homepage": "https://github.com/HavoxPrime/NFTy#readme"
 }
