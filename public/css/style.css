@@ -1,3 +1,30 @@
+:root{
+  --fancy: 'Dancing Script', cursive;
+  --headers:'Teko', sans-serif;
+  --text:'Exo 2', sans-serif;
+}
+
 .imgFilter {
   filter: brightness(0.8);
+}
+
+footer{
+  border: solid black 2px;
+  background-color: lightgray;
+  font-family: var(--text);
+  font-weight: bold;
+}
+
+.gitLink{
+  margin: 5px;
+}
+
+.icon{
+  max-width: 20px;
+  max-height: 20px;
+}
+
+.cardLink{
+  text-decoration: none;
+  color:black;
 }
