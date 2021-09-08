@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
       collection.get({ plain: true })
     );
 //  //  //  //  NEED HANDLEBARS //  //  //  //  //
-    res.json({message: 'HIT!'})
+    res.json({message: 'HIT!'}) // temp message
     // res.render('homepage', {
     //   collections,
     //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 
   //  GET ONE NFT
 router.get('/collection/:id',
-//  withAuth, 
+//  withAuth, //  // comment this back in when auth is setup
  async (req, res) => {
 
   try {
@@ -71,7 +71,7 @@ router.get('/collection/:id',
 
 //  //  Login //  //  
 router.get('/login', (req, res) => {
-  //  //  NEED LOGIN PAGE
+  //  //  NEED HANDLEBARS
   // if (req.session.loggedIn) {
   //   res.redirect('/');
   //   return;
