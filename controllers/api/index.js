@@ -1,4 +1,5 @@
 const router = require('express').Router();
+
 // const collectionRoutes = require('./collection-routes.js');
 const nftRoutes = require('./nft-routes');
 // const userRoutes = require('./user-routes');
