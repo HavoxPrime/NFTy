@@ -1,58 +1,32 @@
 const router = require('express').Router();
-const { Collection, Nft, User } = require('../models')
+const { Collection, NFT } = require('../models');
 
 //http://localhost:3001/
 
 // Import the custom middleware
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 // GET all NFTS for homepage
 router.get('/', async (req, res) => {
   try {
-   const dbNftData = await Nft.findAll({
-        attributes: ["id","title","artist","fileName","description"],
-        include: [
-            {
-                model: Collection,
-                attributes: ["id","name"],
-            },
-        ],
-    })
-    const nfts = dbNftData.map((nft) =>
-    nft.get({plain:true})
-    );
-
-    res.render('homepage', {
-        nfts,
-        loggedIn:req.session.loggedIn,
-    });''
-
-} catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-};
-
-// GET one NFT for Gallery? Shop?
-router.get('/nft/:id', withAuth, async (req, res) => {
-  try {
-    const dbNftData = await Nft.findByPk(req.params.id, {
+    const dbCollectionData = await Collection.findAll({
       include: [
         {
-          model: Collection,
-          attributes: [
-            'id',
-            'name',
-          ],
+          model: NFT,
+          attributes: ['id', 'title','artist','filename','description','collection_id'],
         },
       ],
     });
 
-    const nfts = dbNftData.get({ plain: true });
-            //  //  //  //  NEED HANDLEBARS //  //  //  //  //  
-    res.render('gallery', { 
-        nfts, 
-        loggedIn: req.session.loggedIn 
-    });
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({ plain: true })
+    );
+//  //  //  //  NEED HANDLEBARS //  //  //  //  //
+    res.json({message: 'HIT!'})
+    // res.render('homepage', {
+    //   collections,
+    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    // });
 
   } catch (err) {
     console.log(err);
@@ -60,28 +34,51 @@ router.get('/nft/:id', withAuth, async (req, res) => {
   }
 });
 
-// GET one Collection
-// Use the custom middleware before allowing the user to access the painting
-router.get('/collection/:id', withAuth, async (req, res) => {
+  //  GET ONE NFT
+router.get('/collection/:id',
+//  withAuth, 
+ async (req, res) => {
+
   try {
-    const dbCollectionData = await Collection.findByPk(req.params.id);
-
+    const dbCollectionData = await Collection.findByPk(req.params.id, {
+      include: [
+        {
+          model: NFT,
+          attributes: [
+            'id',
+            'title',
+            'artist',
+            'filename',
+            'description',
+            'collection_id',
+          ]
+        }
+      ]
+    });
     const collection = dbCollectionData.get({ plain: true });
-            //  //  //  //  NEED HANDLEBARS //  //  //  //  //  
-    res.render('painting', { collection, loggedIn: req.session.loggedIn });
+
+    //  //  NEED HANDLEBARS
+    // res.render('collection', { collection, loggedIn: req.session.loggedIn });
+
+    res.json(collection)
+
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
 
-  res.render('login');
+//  //  Login //  //  
+router.get('/login', (req, res) => {
+  //  //  NEED LOGIN PAGE
+  // if (req.session.loggedIn) {
+  //   res.redirect('/');
+  //   return;
+  // }
+
+  // res.render('login');
 });
+
 
 module.exports = router;
