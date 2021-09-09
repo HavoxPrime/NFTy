@@ -22,11 +22,11 @@ router.get('/', async (req, res) => {
       collection.get({ plain: true })
     );
 //  //  //  //  NEED HANDLEBARS //  //  //  //  //
-    res.json({message: 'HIT!'}) // temp message
-    // res.render('homepage', {
-    //   collections,
+    //res.json({message: 'HIT!'}) // temp message
+     res.render('menu', {
+       collections,
     //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
-    // });
+    });
 
   } catch (err) {
     console.log(err);
