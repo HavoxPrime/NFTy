@@ -199,13 +199,13 @@ router.get('/orders', async (req, res) => {
 
 //  //  Login //  //  
 router.get('/login', (req, res) => {
-  //  //  NEED HANDLEBARS
-  // if (req.session.loggedIn) {
-  //   res.redirect('/');
-  //   return;
-  // }
+   //  NEED HANDLEBARS
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
 
-  // res.render('login');
+  res.render('login');
 });
 
 
