@@ -6,7 +6,7 @@ const { Collection, NFT } = require('../models');
 // Import the custom middleware
 // const withAuth = require('../utils/auth');
 
-// GET all NFTS for homepage
+// GET homepage
 router.get('/', async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
@@ -21,9 +21,34 @@ router.get('/', async (req, res) => {
     const collections = dbCollectionData.map((collection) =>
       collection.get({ plain: true })
     );
-//  //  //  //  NEED HANDLEBARS //  //  //  //  //
-    //res.json({message: 'HIT!'}) // temp message
      res.render('menu', {
+       collections,
+    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET login
+router.get('/login', async (req, res) => {
+  try {
+    const dbCollectionData = await Collection.findAll({
+      include: [
+        {
+          model: NFT,
+          attributes: ['id', 'title','artist','filename','description','collection_id'],
+        },
+      ],
+    });
+
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({ plain: true })
+    );
+
+     res.render('login', {
        collections,
     //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
     });
@@ -57,10 +82,113 @@ router.get('/collection/:id',
     });
     const collection = dbCollectionData.get({ plain: true });
 
-    //  //  NEED HANDLEBARS
-    // res.render('collection', { collection, loggedIn: req.session.loggedIn });
-
     res.json(collection)
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET marketpage
+router.get('/marketpage', async (req, res) => {
+  try {
+    const dbCollectionData = await Collection.findAll({
+      include: [
+        {
+          model: NFT,
+          attributes: ['id', 'title','artist','filename','description','collection_id'],
+        },
+      ],
+    });
+
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({ plain: true })
+    );
+     res.render('marketpage', {
+       collections,
+    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET account
+router.get('/account', async (req, res) => {
+  try {
+    const dbCollectionData = await Collection.findAll({
+      include: [
+        {
+          model: NFT,
+          attributes: ['id', 'title','artist','filename','description','collection_id'],
+        },
+      ],
+    });
+
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({ plain: true })
+    );
+     res.render('account', {
+       collections,
+    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET cart
+router.get('/cart', async (req, res) => {
+  try {
+    const dbCollectionData = await Collection.findAll({
+      include: [
+        {
+          model: NFT,
+          attributes: ['id', 'title','artist','filename','description','collection_id'],
+        },
+      ],
+    });
+
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({ plain: true })
+    );
+    //
+     res.render('cart', {
+       collections,
+    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// GET orders
+router.get('/orders', async (req, res) => {
+  try {
+    const dbCollectionData = await Collection.findAll({
+      include: [
+        {
+          model: NFT,
+          attributes: ['id', 'title','artist','filename','description','collection_id'],
+        },
+      ],
+    });
+
+    const collections = dbCollectionData.map((collection) =>
+      collection.get({ plain: true })
+    );
+    //
+     res.render('orders', {
+       collections,
+    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    });
 
   } catch (err) {
     console.log(err);
