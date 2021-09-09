@@ -6,7 +6,7 @@ const { NFT, User, Collection} = require("../../models");
     //  GET ALL
 router.get('/', (req,res)=> {
     NFT.findAll({
-        attributes: ["id","title","artist","fileName","description"],
+        attributes: ["id","title","artist","filename","description"],
         include: [
             {
                 model: Collection,
@@ -29,7 +29,7 @@ router.get('/:id',(req,res)=> {
         where: {
             id:req.params.id,
         },
-    attributes:["id","title","artist","fileName","description"],
+    attributes:["id","title","artist","filename","description"],
     include: [
       {
             model: Collection,
