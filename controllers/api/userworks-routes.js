@@ -1,5 +1,5 @@
 const router = require("express").Router();
-
+var express = require("express");
 const { NFT, User, Collection } = require("../../models");
 
 router.get("/:artist", (req, res) => {
