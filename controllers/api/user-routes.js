@@ -5,7 +5,7 @@ var router = express.Router();
 const { User } = require("../../models");
 
 // User Login
-  //  3001/api/login
+//  3001/api/login
 router.post("/login", async (req, res) => {
   try {
     const loginUserData = await User.findOne({

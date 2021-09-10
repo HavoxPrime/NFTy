@@ -1,21 +1,61 @@
-const router = require('express').Router();
-const { Collection, NFT } = require('../models');
+const router = require("express").Router();
+const { Collection, NFT } = require("../models");
 
 //http://localhost:3001/
 
 // Import the custom middleware
-const withAuth = require('../utils/auth');
+const withAuth = require("../utils/auth");
 
 // GET homepage
-router.get('/', 
-withAuth, //  WithAuth
-async (req, res) => {
+router.get(
+  "/",
+  withAuth, //  WithAuth
+  async (req, res) => {
+    try {
+      const dbCollectionData = await Collection.findAll({
+        include: [
+          {
+            model: NFT,
+            attributes: [
+              "id",
+              "title",
+              "artist",
+              "filename",
+              "description",
+              "collection_id",
+            ],
+          },
+        ],
+      });
+
+      const collections = dbCollectionData.map((collection) =>
+        collection.get({ plain: true })
+      );
+      res.render("marketpage", {
+        collections,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+);
+
+// GET login
+router.get("/login", async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
       include: [
         {
           model: NFT,
-          attributes: ['id', 'title','artist','filename','description','collection_id'],
+          attributes: [
+            "id",
+            "title",
+            "artist",
+            "filename",
+            "description",
+            "collection_id",
+          ],
         },
       ],
     });
@@ -23,43 +63,17 @@ async (req, res) => {
     const collections = dbCollectionData.map((collection) =>
       collection.get({ plain: true })
     );
-     res.render('marketpage', {
-       collections,
-    });
 
+    res.render("login", {
+      collections,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET login
-// router.get('/login', async (req, res) => {
-//   try {
-//     const dbCollectionData = await Collection.findAll({
-//       include: [
-//         {
-//           model: NFT,
-//           attributes: ['id', 'title','artist','filename','description','collection_id'],
-//         },
-//       ],
-//     });
-
-//     const collections = dbCollectionData.map((collection) =>
-//       collection.get({ plain: true })
-//     );
-
-//      res.render('login', {
-//        collections,
-//     });
-
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
-
-  //  GET ONE NFT
+//  GET ONE NFT
 // router.get('/collection/:id', withAuth, async (req, res) => {
 //   try {
 //     const dbCollectionData = await Collection.findByPk(req.params.id, {
@@ -88,13 +102,20 @@ async (req, res) => {
 // });
 
 // GET marketpage
-router.get('/marketpage', withAuth, async (req, res) => {
+router.get("/marketpage", withAuth, async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
       include: [
         {
           model: NFT,
-          attributes: ['id', 'title','artist','filename','description','collection_id'],
+          attributes: [
+            "id",
+            "title",
+            "artist",
+            "filename",
+            "description",
+            "collection_id",
+          ],
         },
       ],
     });
@@ -102,11 +123,10 @@ router.get('/marketpage', withAuth, async (req, res) => {
     const collections = dbCollectionData.map((collection) =>
       collection.get({ plain: true })
     );
-     res.render('marketpage', {
-       collections,
-    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    res.render("marketpage", {
+      collections,
+      //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
     });
-
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -114,13 +134,20 @@ router.get('/marketpage', withAuth, async (req, res) => {
 });
 
 // GET account
-router.get('/account', withAuth, async (req, res) => {
+router.get("/account", withAuth, async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
       include: [
         {
           model: NFT,
-          attributes: ['id', 'title','artist','filename','description','collection_id'],
+          attributes: [
+            "id",
+            "title",
+            "artist",
+            "filename",
+            "description",
+            "collection_id",
+          ],
         },
       ],
     });
@@ -128,11 +155,10 @@ router.get('/account', withAuth, async (req, res) => {
     const collections = dbCollectionData.map((collection) =>
       collection.get({ plain: true })
     );
-     res.render('account', {
-       collections,
-    //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
+    res.render("account", {
+      collections,
+      //   //  //  WHERE WE WILL PUT THE LOGGED IN // //
     });
-
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -140,13 +166,20 @@ router.get('/account', withAuth, async (req, res) => {
 });
 
 // GET cart
-router.get('/cart', withAuth, async (req, res) => {
+router.get("/cart", withAuth, async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
       include: [
         {
           model: NFT,
-          attributes: ['id', 'title','artist','filename','description','collection_id'],
+          attributes: [
+            "id",
+            "title",
+            "artist",
+            "filename",
+            "description",
+            "collection_id",
+          ],
         },
       ],
     });
@@ -155,10 +188,9 @@ router.get('/cart', withAuth, async (req, res) => {
       collection.get({ plain: true })
     );
     //
-     res.render('cart', {
-       collections
+    res.render("cart", {
+      collections,
     });
-
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -166,13 +198,20 @@ router.get('/cart', withAuth, async (req, res) => {
 });
 
 // GET orders
-router.get('/orders', withAuth, async (req, res) => {
+router.get("/orders", withAuth, async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
       include: [
         {
           model: NFT,
-          attributes: ['id', 'title','artist','filename','description','collection_id'],
+          attributes: [
+            "id",
+            "title",
+            "artist",
+            "filename",
+            "description",
+            "collection_id",
+          ],
         },
       ],
     });
@@ -180,24 +219,20 @@ router.get('/orders', withAuth, async (req, res) => {
     const collections = dbCollectionData.map((collection) =>
       collection.get({ plain: true })
     );
-     res.render('orders', {collections});
-
+    res.render("orders", { collections });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-
-//  //  Login //  //  
-router.get('/login', (req, res) => {
+//  //  Login //  //
+router.get("/api/user/login", (req, res) => {
+  res.render("login");
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/api/nft");
     return;
   }
-
-  res.render('login');
 });
-
 
 module.exports = router;
