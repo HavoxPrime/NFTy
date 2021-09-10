@@ -7,6 +7,21 @@ const collectiondata = [
   {
     name: "crazyJoe",
   },
+  {
+    name: "Benny",
+  },
+  {
+    name: "HeadsUp"
+  },
+  {
+    name: "TEXT"
+  },
+  {
+    name: "OWL"
+  },
+  {
+    name: "HIP GUY"
+  },
 ];
 
 const seedCollection = () => Collection.bulkCreate(collectiondata);
