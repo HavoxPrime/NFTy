@@ -1,30 +1,44 @@
-:root{
-  --fancy: 'Dancing Script', cursive;
-  --headers:'Teko', sans-serif;
-  --text:'Exo 2', sans-serif;
+:root {
+  --fancy: "Dancing Script", cursive;
+  --headers: "Teko", sans-serif;
+  --text: "Exo 2", sans-serif;
 }
 
 .imgFilter {
   filter: brightness(0.8);
 }
 
-footer{
+footer {
   border: solid black 2px;
   background-color: lightgray;
   font-family: var(--text);
   font-weight: bold;
 }
 
-.gitLink{
+.gitLink {
   margin: 5px;
 }
 
-.icon{
+.icon {
   max-width: 20px;
   max-height: 20px;
 }
 
-.cardLink{
+.cardLink {
   text-decoration: none;
-  color:black;
+  color: black;
+}
+
+/* login formatiing */
+.login-card {
+  margin: 5% 5% 5% 5%;
+  flex: 0 0 40%;
+  max-width: 50%;
+  padding: 5px;
+  border: 3px solid var(--dark);
+  border-radius: var(--border-radius);
+  border-style: double;
+  border-width: thick;
+  background-color: #679267;
+  color: var(--light);
 }
