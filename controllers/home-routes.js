@@ -42,7 +42,7 @@ router.get(
 );
 
 // GET login
-router.get("/login", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const dbCollectionData = await Collection.findAll({
       include: [
