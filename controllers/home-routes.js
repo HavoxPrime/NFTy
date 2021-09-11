@@ -67,9 +67,15 @@ const withAuth = require("../utils/auth");
 
   })
 
-  //Login Button
-router.get('/login',async (req,res)=> {
-  res.render('login')
-})
+
+//  //  Login //  //
+router.get("/login", (req, res) => {
+  res.render("login");
+  if (req.session.loggedIn) {
+    res.redirect("/api/nft");
+    return;
+  }
+});
+
 
 module.exports = router;

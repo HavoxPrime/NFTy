@@ -3,7 +3,7 @@ var express = require("express");
 const { NFT, User, Collection } = require("../../models");
 
 router.get("/:artist", (req, res) => {
-  NFT.findOne({
+  NFT.findAll({
     where: {
       artist: req.params.artist,
     },

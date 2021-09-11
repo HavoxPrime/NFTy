@@ -42,3 +42,7 @@ footer {
   background-color: #679267;
   color: var(--light);
 }
+.logout {
+  padding-left: 90%;
+  padding-right: 5%;
+}
