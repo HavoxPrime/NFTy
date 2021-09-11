@@ -46,9 +46,8 @@ const signupForm = async (event) => {
     }
   }
 };
-
 //   loggout
-const logout = async () => {
+const Logout = async () => {
   const response = await fetch("/api/user/logout", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -65,5 +64,6 @@ const logout = async () => {
 document.querySelector("#loginbtn").addEventListener("click", loginForm);
 
 document.querySelector("#signupbtn").addEventListener("click", signupForm);
+// document.querySelector("#logoutbtn").addEventListener("click", logout);
 
-// document.querySelector("#logout").addEventListener("click", logout);
+document.querySelector("#logoutbtn").addEventListener("click", Logout);
