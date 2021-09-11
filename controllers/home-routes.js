@@ -227,7 +227,7 @@ router.get("/orders", withAuth, async (req, res) => {
 });
 
 //  //  Login //  //
-router.get("/api/user/login", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("login");
   if (req.session.loggedIn) {
     res.redirect("/api/nft");
