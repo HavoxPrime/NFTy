@@ -1,13 +1,8 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/HavoxPrime/NFTy">
-    <img src="/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="./public/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">NFTy</h3>
@@ -55,27 +50,30 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Marketplace](./public/images/marketplace.png)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+NFT stands for non-fungible tokens. NFTs exist on the blockchain, which is a public ledger that records transactions. An NFT is created from digital objects that represent both tangible and intangible items, such as Art, Gifs, Music etc. Essentially, NFT are digital collectors items,. Think baseball cards but digital. They are popular because they are on the blockchain so they can only have one owner at a time and they are nearly impossible to copy.
 
-Here's why:
+NFT's are blowing up the digital art and collectable world. Digital art and collectables market has started to explode thanks to the blockchains.
+The recent boom in the NFT opened a space for new online marketplaces for artists and collectors to buy and sell NFTs.
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should implement DRY principles to the rest of your life :smile:
+NFTy was created to give creators and investors the ability to sell and buy exclusively digital objects that range from funky 3D videos to images of famous tweets and everything in between.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+What does NFTy bring to the Marketplace?
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+- We have created a platform that is easy to access all you need is a login to view and sell NFTs
+- All Prices are listed in US dollars opposed to cryptocurrency, making it accessible for first time users
+- Our application is responsive so users can buy and sell anywhere!
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+This section lists any major frameworks that was used to build NFTy.
 
 - [Bootstrap](https://getbootstrap.com)
 - [JQuery](https://jquery.com)
-- [Laravel](https://laravel.com)
+- [SweetAlert](https://www.npmjs.com/package/sweetalert)
+- [Node.js](https://nodejs.org/en/)
+- [Heroku](https://heroku.com/)
 
 <!-- GETTING STARTED -->
 
@@ -151,20 +149,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 - Adrian Auchterlonie - [@AdrianAuch](https://github.com/adrianauch) - adrian.auch11@gmail.com
 
 Project Link: [NFTy](https://github.com/HavoxPrime/NFTy)
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-<!-- [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png -->
