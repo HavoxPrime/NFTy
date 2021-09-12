@@ -6,6 +6,7 @@ var cart_n = document.getElementById("cart_n");
 var nftsDIV = document.getElementById("nftsDIV");
 var mostviewedDIV = document.getElementById("mostviewedDIV");
 var collectionDIV = document.getElementById("collectionDIV");
+
 //INFORMATION
 var NFT = [
   { name: "111", price: 1 },
@@ -25,6 +26,26 @@ var COLLECTION = [
   { name: "Collection #2", price: 12 },
   { name: "Collection #3", price: 15 },
 ];
+
+  //  AJAX FOR CARDS
+$.ajax({
+  url: "/api/nft",
+  method: "Get"
+})
+  .then(function (data){
+  console.log(data)
+
+var datalength = data.length;
+console.log(datalength)
+
+for (var i=0; i < datalength; i++){
+  console.log(data[i].title); //  title
+  console.log(data[i].artist);  //  artist
+  console.log(data[i].filename);  //  filename
+}
+  });
+
+
 //HTML
 function HTMLNftProduct(con) {
   let URL = `../images/alone${con}.png`;
