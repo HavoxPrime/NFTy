@@ -10,7 +10,7 @@ const withAuth = require("../utils/auth");
 
   router.get('/', async (req,res) => {
     try{
-      const nftGalleryData = await NFT.findAll({
+      let nfts = await NFT.findAll({
         attributes: ["id","title","artist","filename","description"],
         include: [
             {
@@ -18,12 +18,8 @@ const withAuth = require("../utils/auth");
                 attributes: ["id","name"],
             },
         ],
-      })
-
-      const nfts = nftGalleryData.map((Collection) => {
-        nftGalleryData.get({plain:true})
-      })
-
+    });
+    
       res.render('menu', {
         nfts
       })
