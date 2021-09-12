@@ -16,7 +16,8 @@ const loginForm = async (event) => {
 
     if (response.ok) {
       console.log("this works");
-      document.location.replace("/api/nft");
+      document.location.replace("/");
+      alert("You are logged in");
     } else {
       alert("Failed to log in.");
     }
@@ -40,7 +41,8 @@ const signupForm = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace("/api/nft");
+      document.location.replace("/");
+      alert("you are logged in");
     } else {
       alert("Failed to sign up.");
     }
@@ -55,6 +57,7 @@ const Logout = async () => {
 
   if (response.ok) {
     document.location.replace("/");
+    alert("You have been logged out");
   } else {
     alert("Failed to log out.");
   }
