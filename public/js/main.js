@@ -7,15 +7,36 @@ var nftsDIV = document.getElementById("nftsDIV");
 var mostviewedDIV = document.getElementById("mostviewedDIV");
 var collectionDIV = document.getElementById("collectionDIV");
 
+let URL;
+
 //INFORMATION
 var NFT = [
-  { name: "111", price: 1 },
-  { name: "112", price: 1 },
-  { name: "113", price: 1 },
-  { name: "114", price: 1 },
-  { name: "115", price: 1 },
-  { name: "116", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
+  { name: "", price: 1 },
 ];
+
 var MOSTVIEWED = [
   { name: "111 #1", price: 10 },
   { name: "112 #2", price: 11 },
@@ -33,34 +54,46 @@ $.ajax({
   method: "Get"
 })
   .then(function (data){
-  console.log(data)
+  // console.log(data)
 
 var datalength = data.length;
-console.log(datalength)
+// console.log(datalength)
+apiData = data;
 
 for (var i=0; i < datalength; i++){
-  console.log(data[i].title); //  title
-  console.log(data[i].artist);  //  artist
-  console.log(data[i].filename);  //  filename
+  let name = data[i].title; //  title
+  // console.log(data[i].artist);  //  artist
+  // console.log(data[i].filename);  //  filename
+
+
+let URL = `../images/${data[i].filename}`;
+console.log(URL);
+
+$(".card-img-top"+[i]).attr("src", URL);
+$(".card-text"+[i]).text(name);
+
 }
   });
 
 
 //HTML
 function HTMLNftProduct(con) {
-  let URL = `../images/alone${con}.png`;
+
+  // let URL = `../images/${apiData[con].filename}`;
   let btn = `btnNft${con}`;
+
+
   return `
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" style="height:16rem;" src="${URL}" alt="Card image cap">
+                <img class="card-img-top${con}" style="height:16rem;" src="${URL}" alt="Card image cap">
                 <div class="card-body">
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
-                    <p class="card-text">${NFT[con - 1].name}</p>
+                    <p class="card-text${con}">${NFT[con - 1].name}</p>
                     <p class="card-text">Price: ${NFT[con - 1].price}.00</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
@@ -213,7 +246,7 @@ function cart2(name, price, url, con, btncart) {
 }
 
 (() => {
-  for (let index = 1; index <= 6; index++) {
+  for (let index = 1; index <= 25; index++) {
     nftsDIV.innerHTML += `${HTMLNftProduct(index)}`;
   }
   for (let index = 1; index <= 3; index++) {
