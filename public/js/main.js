@@ -12,29 +12,6 @@ let URL;
 //INFORMATION
 var NFT = [
   // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
-  // { name: "", price: 1 },
 ];
 
 // var MOSTVIEWED = [
@@ -53,44 +30,47 @@ $.ajax({
   url: "/api/nft",
   method: "Get"
 })
-  .then(function (data){
+.then(function (data){
   // console.log(data)
+  var datalength = data.length;
+  // console.log(datalength)
 
-var datalength = data.length;
-// console.log(datalength)
-apiData = data;
+    for (var i=0; i < datalength; i++){
+      let name = data[i].title; //  title
+      let artist = data[i].artist;
+      let url = `../images/${data[i].filename}`;
+      let description = data[i].description;
+      let price = Math.floor(Math.random() * 1000)
 
-for (var i=0; i < datalength; i++){
-  let name = data[i].title; //  title
-  let artist = data[i].artist;
-  let url = `../images/${data[i].filename}`;
-  let description = data[i].description;
-  let price = Math.floor(Math.random() * 1000)
-
-  // console.log(data[i].artist);  //  artist
-  // console.log(data[i].filename);  //  filename
-
-          // let URL = `../images/${data[i].filename}`;
-
-  let newObj = { name, artist, url , description, price}
-  NFT.push(newObj)
-
-        //  ADDS TO HTML
-          // $(".card-img-top"+[i]).attr("src", URL);
-          // $(".card-text"+[i]).text(name);
- 
-          }
-          console.log("===========NFT ARRAY============")
-          console.log(NFT);
-  });
+      let newObj = { name, artist, url , description, price}
+      NFT.push(newObj)
+      
+    }
+    console.log("===========NFT ARRAY============")
+    console.log(NFT);
 
 
+})
+
+.then(()=>{
+  for (let index = 0; index < 26; index++) {
+    nftsDIV.innerHTML += `${HTMLNftProduct(index)}`;
+  }
+   // for (let index = 1; index <= 3; index++) {
+  //   mostviewedeDIV.innerHTML += `${HTMLMostviewedProduct(index)}`;
+  //   collectionDIV.innerHTML += `${HTMLCollectionProduct(index)}`;
+  // }
+  if (localStorage.getItem("cart") == null) {
+  } else {
+    products = JSON.parse(localStorage.getItem("cart"));
+    cart_n.innerHTML = `[${products.length}]`;
+  }
+})
 
 //HTML
 function HTMLNftProduct(con) {
-    console.log(con)
-
-  console.log(NFT[con].url)
+  // console.log(con)
+  // console.log(NFT[con])
 
   let btn = `btnNft${con}`;
 
@@ -258,17 +238,17 @@ function cart2(name, price, url, con, btncart) {
   document.getElementById(btncart).style.display = "none";
 }
 
-(() => {
-  for (let index = 0; index < 26; index++) {
-    nftsDIV.innerHTML += `${HTMLNftProduct(index)}`;
-  }
-  // for (let index = 1; index <= 3; index++) {
-  //   mostviewedeDIV.innerHTML += `${HTMLMostviewedProduct(index)}`;
-  //   collectionDIV.innerHTML += `${HTMLCollectionProduct(index)}`;
-  // }
-  if (localStorage.getItem("cart") == null) {
-  } else {
-    products = JSON.parse(localStorage.getItem("cart"));
-    cart_n.innerHTML = `[${products.length}]`;
-  }
-})();
+// (() => {
+//   for (let index = 0; index < 25; index++) {
+//     nftsDIV.innerHTML += `${HTMLNftProduct(index)}`;
+//   }
+//   // for (let index = 1; index <= 3; index++) {
+//   //   mostviewedeDIV.innerHTML += `${HTMLMostviewedProduct(index)}`;
+//   //   collectionDIV.innerHTML += `${HTMLCollectionProduct(index)}`;
+//   // }
+//   if (localStorage.getItem("cart") == null) {
+//   } else {
+//     products = JSON.parse(localStorage.getItem("cart"));
+//     cart_n.innerHTML = `[${products.length}]`;
+//   }
+// })();
