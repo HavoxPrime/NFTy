@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/HavoxPrime/NFTy">
-    <img src="./public/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="public/images/NFTylogo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">NFTy</h3>
@@ -50,7 +50,7 @@
 
 ## About The Project
 
-![Marketplace](./public/images/marketplace.png)
+![Marketplace](public/images/Mainpg.png)
 
 NFT stands for non-fungible tokens. NFTs exist on the blockchain, which is a public ledger that records transactions. An NFT is created from digital objects that represent both tangible and intangible items, such as Art, Gifs, Music etc. Essentially, NFT are digital collectors items,. Think baseball cards but digital. They are popular because they are on the blockchain so they can only have one owner at a time and they are nearly impossible to copy.
 
@@ -93,7 +93,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
+1. Get a free API Key at [https://project2-nfty.herokuapp.com/](https://project2-nfty.herokuapp.com/)
 2. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
