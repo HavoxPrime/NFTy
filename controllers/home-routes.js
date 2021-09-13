@@ -68,7 +68,7 @@ const withAuth = require("../utils/auth");
 router.get("/login", (req, res) => {
   res.render("login");
   if (req.session.loggedIn) {
-    res.redirect("/api/nft");
+    res.redirect("/");
     return;
   }
 });

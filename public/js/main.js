@@ -11,42 +11,42 @@ let URL;
 
 //INFORMATION
 var NFT = [
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
-  { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
+  // { name: "", price: 1 },
 ];
 
-var MOSTVIEWED = [
-  { name: "111 #1", price: 10 },
-  { name: "112 #2", price: 11 },
-  { name: "113 #3", price: 12 },
-];
-var COLLECTION = [
-  { name: "Collection #1", price: 11 },
-  { name: "Collection #2", price: 12 },
-  { name: "Collection #3", price: 15 },
-];
+// var MOSTVIEWED = [
+//   { name: "111 #1", price: 10 },
+//   { name: "112 #2", price: 11 },
+//   { name: "113 #3", price: 12 },
+// ];
+// var COLLECTION = [
+//   { name: "Collection #1", price: 11 },
+//   { name: "Collection #2", price: 12 },
+//   { name: "Collection #3", price: 15 },
+// ];
 
   //  AJAX FOR CARDS
 $.ajax({
@@ -62,51 +62,62 @@ apiData = data;
 
 for (var i=0; i < datalength; i++){
   let name = data[i].title; //  title
+  let artist = data[i].artist;
+  let url = `../images/${data[i].filename}`;
+  let description = data[i].description;
+  let price = Math.floor(Math.random() * 1000)
+
   // console.log(data[i].artist);  //  artist
   // console.log(data[i].filename);  //  filename
 
+          // let URL = `../images/${data[i].filename}`;
 
-let URL = `../images/${data[i].filename}`;
-console.log(URL);
+  let newObj = { name, artist, url , description, price}
+  NFT.push(newObj)
 
-$(".card-img-top"+[i]).attr("src", URL);
-$(".card-text"+[i]).text(name);
-
-}
+        //  ADDS TO HTML
+          // $(".card-img-top"+[i]).attr("src", URL);
+          // $(".card-text"+[i]).text(name);
+ 
+          }
+          console.log("===========NFT ARRAY============")
+          console.log(NFT);
   });
+
 
 
 //HTML
 function HTMLNftProduct(con) {
+    console.log(con)
 
-  // let URL = `../images/${apiData[con].filename}`;
+  console.log(NFT[con].url)
+
   let btn = `btnNft${con}`;
-
 
   return `
         <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
-                <img class="card-img-top${con}" style="height:16rem;" src="${URL}" alt="Card image cap">
+                <img class="card-img-top${con}" style="height:16rem;" src="${NFT[con].url}" alt="Card image cap">
                 <div class="card-body">
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
                     <i style="color:orange;" class="fa fa-star"  ></i>
-                    <p class="card-text${con}">${NFT[con - 1].name}</p>
-                    <p class="card-text">Price: ${NFT[con - 1].price}.00</p>
+                    <p class="card-text${con}">${NFT[con].name}</p>
+                    <p class="card-text">Price: ${NFT[con].price}.00</p>
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
                             <button type="button" onclick="cart2('${
-                              NFT[con - 1].name
+                              NFT[con].name
                             }','${
-    NFT[con - 1].price
-  }','${URL}','${con}','${btn}')" class="btn btn-sm btn-outline-secondary" ><a style="color:inherit;" href="/cart">Buy</a></button>
+    NFT[con].price
+  }','${NFT[con].url}','${con}','${btn}')" class="btn btn-sm btn-outline-secondary" ><a style="color:inherit;" href="/cart">Buy</a></button>
                             <button id="${btn}" type="button" onclick="cart('${
-    NFT[con - 1].name
+    NFT[con].name
   }','${
-    NFT[con - 1].price
-  }','${URL}','${con}','${btn}')" class="btn btn-sm btn-outline-secondary" >Add to cart</button>
+    NFT[con].price
+  }','${NFT[con].url}','${con}','${btn}')" class="btn btn-sm btn-outline-secondary" >Add to cart</button>
                         </div>
                         <small class="text-muted">Free shipping </small>
                     </div>
@@ -209,6 +220,7 @@ function cart(name, price, url, con, btncart) {
     price: price,
     url: url,
   };
+
   cartItems.push(item);
   let storage = JSON.parse(localStorage.getItem("cart"));
   if (storage == null) {
@@ -224,6 +236,7 @@ function cart(name, price, url, con, btncart) {
   document.getElementById(btncart).style.display = "none";
   animation();
 }
+
 function cart2(name, price, url, con, btncart) {
   var item = {
     name: name,
@@ -246,13 +259,13 @@ function cart2(name, price, url, con, btncart) {
 }
 
 (() => {
-  for (let index = 1; index <= 25; index++) {
+  for (let index = 0; index < 26; index++) {
     nftsDIV.innerHTML += `${HTMLNftProduct(index)}`;
   }
-  for (let index = 1; index <= 3; index++) {
-    mostviewedeDIV.innerHTML += `${HTMLMostviewedProduct(index)}`;
-    collectionDIV.innerHTML += `${HTMLCollectionProduct(index)}`;
-  }
+  // for (let index = 1; index <= 3; index++) {
+  //   mostviewedeDIV.innerHTML += `${HTMLMostviewedProduct(index)}`;
+  //   collectionDIV.innerHTML += `${HTMLCollectionProduct(index)}`;
+  // }
   if (localStorage.getItem("cart") == null) {
   } else {
     products = JSON.parse(localStorage.getItem("cart"));
